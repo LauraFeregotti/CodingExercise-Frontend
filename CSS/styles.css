@@ -1,0 +1,14 @@
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 22px;
+}
+
+.chatcontainer {
+    background-color: aquamarine;
+    padding-top: 50px;
+}
+
+.chat {
+    align-content: center;
+    padding-bottom: 10px;
+}
