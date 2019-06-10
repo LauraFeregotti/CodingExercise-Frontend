@@ -8,6 +8,15 @@ let url = 'http://localhost:5000/api/v1.0';
 let author = 'Tom';
 let token = 'laura-test';
 
+var chatroom = prompt("Enter the name of the chatroom");
+if (chatroom != null) {
+  token = chatroom;
+}
+var nick = prompt("Enter your nick");
+if (nick != null) {
+  author = nick;
+}
+
 function sendData() {
 
     response = fetch(url, {
