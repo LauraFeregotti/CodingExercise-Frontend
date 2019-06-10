@@ -1,6 +1,5 @@
 body {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 22px;
+    font-family: 'Barlow', sans-serif;
 }
 
 .chatcontainer {
@@ -11,4 +10,46 @@ body {
 .chat {
     align-content: center;
     padding-bottom: 10px;
+}
+
+.list {
+    padding: 15px;
+}
+
+.messagedisplay {
+    list-style: none;
+    padding: 2px;
+    font-size: 25px;
+    color: #0c0b0b;
+}
+
+p.time,
+.author,
+.messagedisplay {
+    margin: 0px;
+}
+
+.time {
+    color: #605d5d;
+    font-size: 13px;
+}
+
+.author {
+    color: #605d5d;
+    font-size: 13px;
+}
+
+.container {
+    margin-top: 12px;
+
+}
+
+.secondcontainer {
+    background-color: #c6c4c4;
+    padding: 23px;
+    margin: 5px;
+}
+
+.messages {
+    padding: 12px;
 }

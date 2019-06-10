@@ -35,9 +35,14 @@ function sendData() {
   }
   
   button.addEventListener('click', sendData);
+  textbox.addEventListener('keyup', function onEvent(e) {
+    if (e.keyCode === 13) {
+        sendData();
+    }
+});
 
  
-  function getMessages() {
+function getMessages() {
     endpoint = `${apiUrlForGet}${token}`;
     fetch(endpoint)
       .then(function (response) {
@@ -47,15 +52,32 @@ function sendData() {
         console.log(myJson);
         messages.innerHTML = "";
         for (let index = 0; index < myJson.length; index++) {
-          let newMessage = document.createElement("li");
-          newMessage.className = 'messagedisplay';
-          let timeforparsing = myJson[index].time;
-          let parsing = moment(timeforparsing).format("DD MMM YYYY hh:mm a");
-          console.log(parsing);
-          newMessage.innerHTML = myJson[index].message + "    " + myJson[index].author + "   " + parsing;
-          messages.appendChild(newMessage);
+          let container = document.createElement("div");
+        container.className = 'col-lg-12 col-sm-12 col-xs-12 container ';
+        let secondcontainer = document.createElement("div");
+        secondcontainer.className = 'secondcontainer row';
+        let newMessage = document.createElement("p");
+        newMessage.className = 'messagedisplay';
+        let newMessageAuthor = document.createElement("p");
+        newMessageAuthor.className = 'author';
+        let newMessageTime = document.createElement("p");
+        newMessageTime.className = 'time';
+      
+        let timeforparsing = myJson[index].time;
+        let parsing = moment(timeforparsing).format("DD MMM YYYY hh:mm a");
+        console.log(parsing);
+        newMessageAuthor.innerHTML= myJson[index].author;
+        newMessageTime.innerHTML= parsing
+        newMessage.innerHTML = myJson[index].message; 
+        secondcontainer.appendChild(newMessageAuthor);
+        secondcontainer.appendChild(newMessage);
+        secondcontainer.appendChild(newMessageTime);
+        container.appendChild(secondcontainer);
+        messages.appendChild(container);
           textbox.value = "";
   
         }
       });
-  };
+};
+
+  /*setInterval(getMessages, 5000); */
