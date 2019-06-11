@@ -3,6 +3,7 @@ let messages = document.getElementById("messages");
 let textbox = document.getElementById("textbox");
 let button = document.getElementById("button");
 
+/* Setting APIs to a variable*/
 let apiUrlForGet = 'http://localhost:5000/api/v1.0?token=';
 let url = 'http://localhost:5000/api/v1.0';
 let author = 'Tom';
