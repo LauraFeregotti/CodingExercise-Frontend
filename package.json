@@ -1,0 +1,22 @@
+{
+  "name": "codingexercise-frontend",
+  "version": "1.0.0",
+  "description": "Creating a chat interface",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "http-server . -a 0.0.0.0 -p 8080 -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LauraFeregotti/CodingExercise-Frontend.git"
+  },
+  "author": "Laura Feregotti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LauraFeregotti/CodingExercise-Frontend/issues"
+  },
+  "homepage": "https://github.com/LauraFeregotti/CodingExercise-Frontend#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
