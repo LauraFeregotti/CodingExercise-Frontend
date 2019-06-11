@@ -1,3 +1,4 @@
+/* Getting my HTML elements and assigning them variables for JavaScript manipulation*/
 let listofelements = document.getElementById("listofelements");
 let messages = document.getElementById("messages");
 let textbox = document.getElementById("textbox");
@@ -9,6 +10,7 @@ let url = 'http://localhost:5000/api/v1.0';
 let author = 'Tom';
 let token = 'laura-test';
 
+/* Creating prompt messages, so the user can set the value of the token(chatroom) and the author(nick/name) */
 var chatroom = prompt("Enter the name of the chatroom");
 if (chatroom != null) {
   token = chatroom;
@@ -17,6 +19,8 @@ var nick = prompt("Enter your nick");
 if (nick != null) {
   author = nick;
 }
+
+/*Creating the POST request */
 
 function sendData() {
 
@@ -42,7 +46,7 @@ function sendData() {
     }
 });
 
- 
+/*Creating the GET request */
 function getMessages() {
     endpoint = `${apiUrlForGet}${token}`;
     fetch(endpoint)
@@ -63,7 +67,7 @@ function getMessages() {
         newMessageAuthor.className = 'author';
         let newMessageTime = document.createElement("p");
         newMessageTime.className = 'time';
-      
+/*Parsing time using Moment*/
         let timeforparsing = myJson[index].time;
         let parsing = moment(timeforparsing).format("DD MMM YYYY hh:mm a");
         console.log(parsing);
@@ -81,4 +85,4 @@ function getMessages() {
       });
 };
 
-  /*setInterval(getMessages, 5000); */
+setInterval(getMessages, 5000); 
