@@ -7,16 +7,39 @@ let button = document.getElementById("button");
 //Defining the url of my API
 let url = new URL("http://localhost:5000/api/v1.0");
 
-/*Allows the user to set the values of author and token using promps
+//This function fires the prompts
+addingChatRoomName();
+addingNickname();
+
+/*Allows the user to set the value of the token using a prompt
 I'm currently setting the value of the token because I didn't receive the token*/
-let chatroom = prompt("Enter the name of the chatroom");
-if (chatroom != null) {
-    token = chatroom;
+function addingChatRoomName() {
+    let chatroom = prompt("Enter the name of the chatroom");
+    if (chatroom != "") {
+        token = chatroom;
+    } else if (chatroom === "") {
+        //if user presses "OK", but the input field is empty, it will generate a random chatroom name
+        token = 'yourChatroom' + Math.floor(Math.random() * 100);
+    } else {
+        // if user hits cancel, it will generate a random chatroom name
+        token = 'yourChatroom' + Math.floor(Math.random() * 100);
+    }
 }
-let nick = prompt("Enter your nick");
-if (nick != null) {
-    author = nick;
+
+//Allows the user to set the value of the author using a prompt
+function addingNickname() {
+    let nick = prompt("Enter your nick");
+    if (nick != "") {
+        author = nick;
+    } else if (nick === "") {
+        // if user presses "OK", but the input field is empty, it will generate a random nick name
+        author = 'yourNick' + Math.floor(Math.random() * 10);
+    } else {
+        // if user hits cancel, it will generate a random nick name
+        author = 'yourNick' + Math.floor(Math.random() * 10);
+    }
 }
+
 //Making a POST request
 function sendData() {
     url.searchParams.delete("token", token);
@@ -36,13 +59,15 @@ function sendData() {
         textbox.value = "";
     });
 }
-//Every time the user clicks or presses "enter" the function sendData starts to run and makes a POST request
+
+//Every time the user clicks or presses "enter", the function sendData starts to run and makes a POST request
 button.addEventListener('click', sendData);
 textbox.addEventListener('keyup', function onEvent(e) {
     if (e.keyCode === 13) {
         sendData();
     }
 });
+
 //Making a GET request and getting only a maximum of 10 messages newer
 function getMessages() {
     url.searchParams.append("token", token);
@@ -57,10 +82,11 @@ function getMessages() {
             creatingMessage(myJson);
         });
 };
+
 //This function takes the json value response of the GET request and creates a message element
 function creatingMessage(myJson) {
     for (let index = 0; index < myJson.length; index++) {
-        //Creating HTML elements
+        //Creating HTML elements and setting its classes
         let messageContainer = document.createElement("div");
         messageContainer.className = 'secondcontainer row';
 
@@ -87,11 +113,5 @@ function creatingMessage(myJson) {
         messages.appendChild(messageContainer);
     }
 }
-//This method makes a polling by making a GET request with the function getMessages every 5 seconds
+//This method makes a polling, by making a GET request with the function getMessages every 5 seconds
 setInterval(getMessages, 5000);
-
-
-
-
-
-
