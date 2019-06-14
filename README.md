@@ -1,13 +1,13 @@
-###Coding Exercise
+# Coding Exercise
 
 ## Prerequisites
-Install Node.js  you can get it from [here] https://nodejs.org/en/
+Install Node.js  you can get it from [here](https://nodejs.org/en/)
 
-##Set-up
+## Set-up
 1. Clone the repository of the project.
-2. As the API wasn't working, my boyfriend created an API. So you will have to follow the instructions on this [repository] https://github.com/Av4t4r/chattr-box
+2. As the API wasn't working, my boyfriend created an API. So you will have to follow the instructions on this [repository](https://github.com/Av4t4r/chattr-box)
 
-##Run it
+## Run it
 Once the API is running, just run the local server:
 ```
 http-server
