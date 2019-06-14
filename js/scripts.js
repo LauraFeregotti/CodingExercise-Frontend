@@ -7,36 +7,33 @@ let button = document.getElementById("button");
 //Defining the url of my API
 let url = new URL("http://localhost:5000/api/v1.0");
 
-//This function fires the prompts
+//This functions fires the chatroom prompt
 addingChatRoomName();
-addingNickname();
+//This functions fires the nick prompt
+addingNickName();
 
 /*Allows the user to set the value of the token using a prompt
-I'm currently setting the value of the token because I didn't receive the token*/
+I'm currently setting the value of the token because I didn't receive the token.
+The prompt will keep executing until the user enters a value*/
 function addingChatRoomName() {
-    let chatroom = prompt("Enter the name of the chatroom");
-    if (chatroom != "") {
+    let chatroom;
+    while (chatroom == null || chatroom == "") {
+        chatroom = prompt("Enter the name of the chatroom");
+    }
+    if (chatroom != "" || chatroom != null) {
         token = chatroom;
-    } else if (chatroom === "") {
-        //if user presses "OK", but the input field is empty, it will generate a random chatroom name
-        token = 'yourChatroom' + Math.floor(Math.random() * 100);
-    } else {
-        // if user hits cancel, it will generate a random chatroom name
-        token = 'yourChatroom' + Math.floor(Math.random() * 100);
     }
 }
 
-//Allows the user to set the value of the author using a prompt
-function addingNickname() {
-    let nick = prompt("Enter your nick");
-    if (nick != "") {
+/*Allows the user to set the value of the author using a prompt.
+The prompt will keep executing until the user enters a value*/
+function addingNickName() {
+    let nick;
+    while (nick == null || nick == "") {
+        nick = prompt("Enter your nick");
+    }
+    if (nick != "" || nick != null) {
         author = nick;
-    } else if (nick === "") {
-        // if user presses "OK", but the input field is empty, it will generate a random nick name
-        author = 'yourNick' + Math.floor(Math.random() * 10);
-    } else {
-        // if user hits cancel, it will generate a random nick name
-        author = 'yourNick' + Math.floor(Math.random() * 10);
     }
 }
 
