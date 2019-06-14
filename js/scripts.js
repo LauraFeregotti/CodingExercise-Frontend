@@ -98,7 +98,6 @@ function creatingMessage(myJson) {
         //Parsing the time with Moment.js
         let timeforparsing = myJson[index].time;
         let parsing = moment(timeforparsing).format("DD MMM YYYY hh:mm a");
-        console.log(parsing);
         //Adding specific json values to the HTML elements        
         author.innerHTML = myJson[index].author;
         dateAndTime.innerHTML = parsing
