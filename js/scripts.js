@@ -7,9 +7,9 @@ let button = document.getElementById("button");
 //Defining the url of my API
 let url = new URL("http://localhost:5000/api/v1.0");
 
-//This functions fires the chatroom prompt
+//This function fires the chatroom prompt
 addingChatRoomName();
-//This functions fires the nick prompt
+//This function fires the nick prompt
 addingNickName();
 
 /*Allows the user to set the value of the token using a prompt
@@ -65,7 +65,7 @@ textbox.addEventListener('keyup', function onEvent(e) {
     }
 });
 
-//Making a GET request and getting only a maximum of 10 messages newer
+//Making a GET request and getting the latest 10 messages"
 function getMessages() {
     url.searchParams.append("token", token);
     url.searchParams.append("limit", 10);
@@ -110,5 +110,6 @@ function creatingMessage(myJson) {
         messages.appendChild(messageContainer);
     }
 }
+
 //This method makes a polling, by making a GET request with the function getMessages every 5 seconds
 setInterval(getMessages, 5000);
