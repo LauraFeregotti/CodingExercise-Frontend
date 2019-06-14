@@ -5,7 +5,7 @@ let textbox = document.getElementById("textbox");
 let button = document.getElementById("button");
 
 //Defining the url of my API
-let url = new URL("http://localhost:5000/api/v1.0");
+const url = new URL("http://localhost:5000/api/v1.0");
 
 //This function fires the chatroom prompt
 addingChatRoomName();
@@ -37,10 +37,12 @@ function addingNickName() {
     }
 }
 
+/* Defining the endpoint to get all the chat messages.
+In order to POST a message, it's the base url without query params */
+let getMessagesEndpoint = `${url}?token=${token}&limit=10`
+
 //Making a POST request
 function sendData() {
-    url.searchParams.delete("token", token);
-    url.searchParams.delete("limit", 10);
     response = fetch(url, {
         method: 'POST',
         body: JSON.stringify({
@@ -58,7 +60,9 @@ function sendData() {
 }
 
 //Every time the user clicks or presses "enter", the function sendData starts to run and makes a POST request
-button.addEventListener('click', sendData);
+button.addEventListener('click', sendData, false);
+button.addEventListener("touchend", sendData, false);
+
 textbox.addEventListener('keyup', function onEvent(e) {
     if (e.keyCode === 13) {
         sendData();
@@ -67,10 +71,7 @@ textbox.addEventListener('keyup', function onEvent(e) {
 
 //Making a GET request and getting the latest 10 messages"
 function getMessages() {
-    url.searchParams.append("token", token);
-    url.searchParams.append("limit", 10);
-    endpoint = `${url}`;
-    fetch(endpoint)
+    fetch(getMessagesEndpoint)
         .then(function (response) {
             return response.json();
         })
